@@ -7,7 +7,7 @@ const Footer = ( props, content ) =>{
   return <footer id="footer">
     <div className="site-container">
       <div className="footer-summary">
-        Footer...
+        © 2021 YMX Blog
       </div>
     </div>
   </footer>

@@ -1,0 +1,29 @@
+.post-single-entry {
+
+  .heading {
+    margin-bottom: 45px;
+
+    .post-thumb {
+      display: block;
+      line-height: 0;
+      margin-bottom: 45px;
+
+      img {
+        max-width: 100%;
+        border-radius: 3px;
+      }
+    }
+
+    .post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 14px;
+      margin-bottom: 10px;
+      
+      > div {
+        margin-right: 20px;
+        border-bottom: solid 1px;
+      }
+    }
+  }
+}

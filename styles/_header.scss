@@ -1,5 +1,8 @@
 .header-top {
-
+  padding: 15px 0;
+  background: $accent-color;
+  color: white;
+  margin-bottom: 65px;
 }
 
 .header-summary {
@@ -12,7 +15,28 @@
   }
 
   &__site-nav {
-    
+
+    .menu {
+
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      
+      .menu-item {
+        list-style: none;
+        
+        &:not(:last-child) {
+          margin-right: 30px;
+        }
+
+        &__active {
+
+          a {
+            border-bottom: solid 1px;
+          }
+        }
+      }
+    }
   }
 
   &__site-tools {
