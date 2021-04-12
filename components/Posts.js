@@ -1,19 +1,21 @@
 import Link from 'next/link'
+
 /**
  *Posts
  */
 
 const Posts = ( { posts } ) => {
-
   const { edges, aggregate } = posts
-  
+
   return (
     <div className="posts-loop">
       {
         edges.length && 
-        edges.map( post => {
+        edges.map( (post, index) => {
           return (
-            <div className={ [ 'post-item' ].join( ' ' ) } key={ post.node.id }>
+            <div 
+              className={ [ 'post-item' ].join( ' ' ) } 
+              key={ post.node.id }>
               <div className="post-item__thumb">
                 <Link href={ `/blog/${ post.node.slug }` }>
                   <a><img src={ post.node.coverImage.url } alt={ post.node.title } /></a>

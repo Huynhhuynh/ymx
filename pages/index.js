@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Sidebar from '../components/Sidebar'
 import Posts from '../components/Posts'
 import Welcome from '../components/Welcome'
-
 import { Request } from '../lib/api'
 
 export default function Home( { posts } ) {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 
 /**
  * Header JS
@@ -27,7 +28,14 @@ const Header = ( props, content ) => {
     }
   ] )
 
-  return <header id="header" className="header-top">
+  const variants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 },
+  }
+
+  return <motion.header 
+    id="header" 
+    className="header-top">
     <div className="site-container-full">
       <div className="header-summary">
         <div className="header-summary__site-brand">
@@ -38,12 +46,17 @@ const Header = ( props, content ) => {
             <ul className="menu">
               {
                 menu.length && 
-                menu.map( item => (
-                  <li className={ [ 'menu-item', (router.pathname == item.link ? 'menu-item__active' : '') ].join( ' ' ) } key={ item.name }>
+                menu.map( (item, index) => (
+                  <motion.li 
+                    initial="hidden"
+                    animate="visible"
+                    variants={variants}
+                    transition={{ delay: index * .1 }}
+                    className={ [ 'menu-item', (router.pathname == item.link ? 'menu-item__active' : '') ].join( ' ' ) } key={ item.name }>
                     <Link href={ item.link }>
                       <a>{ item.name }</a>
                     </Link>
-                  </li>
+                  </motion.li>
                 ) )
               }
             </ul>
@@ -54,7 +67,7 @@ const Header = ( props, content ) => {
         </div>
       </div>
     </div>
-  </header>
+  </motion.header>
 }
 
 export default Header
