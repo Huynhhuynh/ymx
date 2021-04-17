@@ -1,3 +1,5 @@
+import WG_Category from '../components/widgets/WG-Category'
+
 /**
  * Sidebar 
  */
@@ -5,7 +7,7 @@
 const Sidebar = ( props, content ) => {
 
   return <div className="sidebar">
-    Sidebar...
+    <WG_Category />
   </div>
 }
 

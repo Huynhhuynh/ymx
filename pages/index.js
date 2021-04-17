@@ -1,10 +1,12 @@
+import { useAppContext } from '../context/state'
 import Head from 'next/head'
 import Sidebar from '../components/Sidebar'
 import Posts from '../components/Posts'
 import Welcome from '../components/Welcome'
-import { Request } from '../lib/api'
+import { GetPosts } from '../lib/api'
 
 export default function Home( { posts } ) {
+
   return (
     <>
       <Head>
@@ -18,7 +20,10 @@ export default function Home( { posts } ) {
         </Welcome>
         <div className="site-main-summary">
           <div className="articles-container">
-            <Posts posts={ posts } />
+            {
+              posts &&
+              <Posts posts={ posts } />
+            }
           </div>
           <Sidebar />
         </div>
@@ -28,85 +33,11 @@ export default function Home( { posts } ) {
 }
 
 export async function getStaticProps() {
-  const query = `query content_view_10e288b277ac4150890da279d16ae8ff($first: Int, $skip: Int, $stage: Stage!, $where: PostWhereInput, $orderBy: PostOrderByInput) {
-    page: postsConnection(first: $first, skip: $skip, stage: $stage, where: $where, orderBy: $orderBy) {
-      edges {
-        node {
-          id
-          stage
-          updatedAt
-          author {
-            entryId: id
-            name
-          }
-          coverImage {
-            id
-            handle
-            fileName
-            mimeType
-            url
-          }
-          createdAt
-          date
-          id
-          publishedAt
-          publishedBy {
-            entryId: id
-            name
-          }
-          seo {
-            entryId: id
-            title
-          }
-          slug
-          tags
-          title
-          updatedAt
-          createdBy {
-            entryId: id
-            name
-            picture
-            kind
-          }
-          updatedBy {
-            entryId: id
-            name
-            picture
-            kind
-          }
-          documentInStages(includeCurrent: true) {
-            id
-            stage
-            updatedAt
-            publishedAt
-          }
-          content {
-            html
-          }
-          excerpt
-        }
-      }
-      aggregate {
-        count
-      }
-    }
-  }
-  ` 
-
-  const variables = {
-    first: 25,
-    skip: 0,
-    stage: "DRAFT",
-    where : { "AND": [] },
-    orderBy: null,
-    locales: null
-  }
-  
-  const { page } = await Request( query, variables )
+  const Posts = await GetPosts( { first: 25, skip: 0, stage: "DRAFT", where : { "AND": [] }, orderBy: null, locales: null } )
 
   return {
     props: {
-      posts: page
+      posts: Posts.page
     }
   }
 }

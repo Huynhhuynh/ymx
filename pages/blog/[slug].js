@@ -30,7 +30,7 @@ export default function SingleBlog( { post } ) {
             </div>
             <h1 className="post-title">{ post.title }</h1>
           </div>
-          <div class="post-content" dangerouslySetInnerHTML={ { __html: post.content.html } }></div>
+          <div className="post-content" dangerouslySetInnerHTML={ { __html: post.content.html } }></div>
         </article>
       </div>
     </>
