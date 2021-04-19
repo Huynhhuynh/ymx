@@ -4,6 +4,7 @@
 @import 'posts';
 @import 'welcome';
 @import 'post-single';
+@import 'widgets';
 
 html,
 body {
@@ -63,6 +64,11 @@ h1, h2, h3, h4, h5, h6 {
   .sidebar {
     width: 30%;
   }
+}
+
+.widget-container {
+  position: sticky;
+  top: 20px;
 }
 
 .button {

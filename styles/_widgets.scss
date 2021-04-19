@@ -1,0 +1,46 @@
+.widget {
+
+  &__title {
+    color: black
+  }
+
+  &__entry {
+
+  }
+}
+
+.wg-categories-content {
+
+  .cat-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 25px;
+    
+    &__thumbnail {
+      width: 60px;
+      margin-right: 10px;
+      // border: solid 1px var(--cat-color);
+      // padding: 3px;
+      border-radius: 80px;
+      line-height: 0;
+
+      img {
+        width: 100%;
+        border-radius: 80px;
+      }
+    }
+
+    &__entry {
+      
+      h4 {
+        margin: 0;
+        font-size: 1em;
+
+        a {
+          color: var(--cat-color)
+        }
+      }
+    }
+  }
+}

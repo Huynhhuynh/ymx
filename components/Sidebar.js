@@ -7,7 +7,9 @@ import WG_Category from '../components/widgets/WG-Category'
 const Sidebar = ( props, content ) => {
 
   return <div className="sidebar">
-    <WG_Category />
+    <div className="widget-container">
+      <WG_Category />
+    </div>
   </div>
 }
 
