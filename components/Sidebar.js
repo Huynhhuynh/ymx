@@ -5,10 +5,11 @@ import WG_Category from '../components/widgets/WG-Category'
  */
 
 const Sidebar = ( props, content ) => {
-
+  const { categories } = props.value
+  
   return <div className="sidebar">
     <div className="widget-container">
-      <WG_Category />
+      <WG_Category value={ categories } />
     </div>
   </div>
 }

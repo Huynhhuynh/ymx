@@ -1,28 +1,19 @@
 import Link from 'next/link'
-import { useState, useEffect } from 'react' 
-import { GetCategories } from '../../lib/api'
 
 /* 
  * Widget Category
  */
 
-export default function WG_Category () {
-  const [ categories, setCategories ] = useState( null )
-
-  useEffect( async () => {
-    const Cats = await GetCategories()
-    setCategories( {
-      edges: Cats?.page?.edges
-    } )
-  } )
-
+export default function WG_Category ( { value } ) {
+  const categories = [...value]
+  
   return (
     <div className="widget wg-categories">
       <h2 className="widget__title">Categories</h2>
       <div className="widget__entry wg-categories-content">
         {
-          categories && categories.edges &&
-          categories.edges.map( ( cat ) => {
+          categories && 
+          categories.map( ( cat ) => {
             let thumbnail = cat?.node?.image?.url || 'http://sog.ueh.edu.vn/wp-content/themes/namtech.io2/assets/images/default/noimage.png'
             let postCount = cat.node.posts.length ? `<sup>${ cat.node.posts.length }</sup>` : ''
             return (

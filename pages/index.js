@@ -3,9 +3,9 @@ import Head from 'next/head'
 import Sidebar from '../components/Sidebar'
 import Posts from '../components/Posts'
 import Welcome from '../components/Welcome'
-import { GetPosts } from '../lib/api'
+import { GetPosts, GetCategories } from '../lib/api'
 
-export default function Home( { posts } ) {
+export default function Home( { posts, sidebarData } ) {
 
   return (
     <>
@@ -25,7 +25,7 @@ export default function Home( { posts } ) {
               <Posts posts={ posts } />
             }
           </div>
-          <Sidebar />
+          <Sidebar value={ sidebarData } />
         </div>
       </div>
     </>
@@ -34,10 +34,14 @@ export default function Home( { posts } ) {
 
 export async function getStaticProps() {
   const Posts = await GetPosts( { first: 25, skip: 0, stage: "DRAFT", where : { "AND": [] }, orderBy: null, locales: null } )
+  const Cats = await GetCategories()
 
   return {
     props: {
-      posts: Posts.page
+      posts: Posts.page,
+      sidebarData: {
+        categories: Cats?.page?.edges
+      }
     }
   }
 }

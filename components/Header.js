@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 
+import WG_Search from './widgets/WG-Search'
+
 /**
  * Header JS
  */
@@ -63,7 +65,7 @@ const Header = ( props, content ) => {
           </nav>
         </div>
         <div className="header-summary__site-tools">
-          Search
+          <WG_Search />
         </div>
       </div>
     </div>
